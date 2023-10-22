@@ -1,0 +1,11 @@
+
+/* @import 'antd/dist/antd.min.css'; */
+*{
+  margin: 0px;
+  padding: 0px;
+}
+
+
+.ant-layout-sider-trigger{
+  background: #3ab569;
+}
