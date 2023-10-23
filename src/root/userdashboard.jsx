@@ -234,14 +234,13 @@ const UserDashboard = () => {
   };
 
   const getWhichServingToken = async () => {
-    
-  const config = {
-    headers: {
-      "content-type": "application/json",
+    const config = {
+      headers: {
+        "content-type": "application/json",
 
-      Authorization: `Bearer ${localStorage.getItem("authtoken")}`,
-    },
-  };
+        Authorization: `Bearer ${localStorage.getItem("authtoken")}`,
+      },
+    };
     try {
       const response = await axios.get(`token/get/serving`, config);
 
@@ -345,7 +344,7 @@ const UserDashboard = () => {
         // console.log(error.response.data.detail);
       });
   };
-  
+
   const RejectStatusUpdate = async () => {
     await axios
       .patch(`token/reject`, null, config)
@@ -386,11 +385,10 @@ const UserDashboard = () => {
   };
 
   const HoldStatustoProcessing = async (id) => {
-
     const config = {
       headers: {
         "content-type": "application/json",
-  
+
         Authorization: `Bearer ${localStorage.getItem("authtoken")}`,
       },
     };
@@ -400,7 +398,7 @@ const UserDashboard = () => {
         console.log(response);
         if (response.status === 200) {
           //  return response.json();
-          message.success('Token get succesfully');
+          message.success("Token get succesfully");
           // console.log('hold',response);
           // setCallToken(true);
           // setFinishcategories(false);
@@ -595,8 +593,17 @@ const UserDashboard = () => {
                         {moment.utc(Date()).format("YYYY-MM-DD hh:mm A")}
                       </h3>
                       <h2>Now Serving </h2>
-                      <p style={{ color: "#ff4f4f", fontSize: "30px" }}>
-                        T-{getwhichservingdata?.detail?.token_id}{" "}
+                      <p
+                        style={{
+                          color: "#ff4f4f",
+                          fontSize: "18px",
+                          fontWeight: "bold",
+                        }}
+                      >
+                        {getwhichservingdata?.detail?.special_case
+                          ? "Special "
+                          : null}
+                        Token-{getwhichservingdata?.detail?.token_id}{" "}
                         <strong
                           style={{
                             fontSize: "12px",
@@ -784,45 +791,39 @@ const UserDashboard = () => {
                         />
                         
                       </Form.Item> */}
-                       <Form.Item
-            name="counter_categories"
-            label="Counter Type"
-           
-            style={{ alignSelf: "center", width: "100%",marginTop:'20px' }}
-          >
-            <Select
-              showSearch
-              placeholder="Select One"
-              // size="large"
-            
-              onChange={(e) => {
-                setReqData(e);
-              }}
-              
-            >
-             
-             
-              { data?
-              data?.service?.map(item => 
-                <>
-               
-              { 
-                
-                item?.is_done===false && item?.value!==countercategories?
-                  <Option value={item.value}>{item.name}</Option>:null}
+                      <Form.Item
+                        name="counter_categories"
+                        label="Counter Type"
+                        style={{
+                          alignSelf: "center",
+                          width: "100%",
+                          marginTop: "20px",
+                        }}
+                      >
+                        <Select
+                          showSearch
+                          placeholder="Select One"
+                          // size="large"
 
-                </>
-               
-               
-                
-                    
-                ):null}
-              <Option value="next">Auto-Serveing</Option>
-          
-            
-              
-            </Select>
-          </Form.Item>
+                          onChange={(e) => {
+                            setReqData(e);
+                          }}
+                        >
+                          {data
+                            ? data?.service?.map((item) => (
+                                <>
+                                  {item?.is_done === false &&
+                                  item?.value !== countercategories ? (
+                                    <Option value={item.value}>
+                                      {item.name}
+                                    </Option>
+                                  ) : null}
+                                </>
+                              ))
+                            : null}
+                          <Option value="next">Auto-Serveing</Option>
+                        </Select>
+                      </Form.Item>
 
                       {/* {console.log(spins)} */}
                       {spins ? (
@@ -867,27 +868,37 @@ const UserDashboard = () => {
                         </Row>
                       )}
                       <>
-                      
-                      <p
-                        style={{
-                          textAlign: "center",
-                          fontWeight: "700",
-                          // padding: "18px",
-                        }}
-                      >
-                        Note If you don't want to select click{" "}
-                        <strong>Next</strong>
-                      </p>
-                      {data?
-                      data?.service?.map((i) => (
-                        <h4 style={{ textAlign:'center', color: "black" }}>
-                          {i?.name} : <strong>{i.is_done?<strong style={{color:'#3ab569'}}>Finished</strong>:<strong style={{color:'red'}}>Unfinished</strong>}</strong>
-                        </h4>))
-                      :null}
-                      
+                        <p
+                          style={{
+                            textAlign: "center",
+                            fontWeight: "700",
+                            // padding: "18px",
+                          }}
+                        >
+                          Note If you don't want to select click{" "}
+                          <strong>Next</strong>
+                        </p>
+                        {data
+                          ? data?.service?.map((i) => (
+                              <h4
+                                style={{ textAlign: "center", color: "black" }}
+                              >
+                                {i?.name} :{" "}
+                                <strong>
+                                  {i.is_done ? (
+                                    <strong style={{ color: "#3ab569" }}>
+                                      Finished
+                                    </strong>
+                                  ) : (
+                                    <strong style={{ color: "red" }}>
+                                      Unfinished
+                                    </strong>
+                                  )}
+                                </strong>
+                              </h4>
+                            ))
+                          : null}
                       </>
-
-                      
                     </Form>
                   </Col>
                 </Row>

@@ -473,7 +473,7 @@ const CategoriesList = () => {
             <Input size="large" name="name" placeholder="x-ray" />
           </Form.Item>
           <Form.Item name="value" label="Value">
-            <Input size="large" name="value" placeholder="xray" />
+            <Input disabled size="large" name="value" placeholder="xray" />
           </Form.Item>
           <Form.Item name="sequence" label="Sequence">
             <Input size="large" name="sequence" placeholder="1-2-3" />
