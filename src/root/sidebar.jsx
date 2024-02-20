@@ -114,7 +114,25 @@ const Sidebar = () => {
           </SubMenu>
        */}
 
-          <SubMenu
+         
+        
+          
+        { localStorage.getItem('staff')==='true' && localStorage.getItem('active')==='true' && localStorage.getItem('username').endsWith('user')===true ?
+        <>
+        <SubMenu
+        key="user"
+        icon={<UserSwitchOutlined />}
+        title="User Management"
+      >
+        <Menu.Item key="user_list" icon={<UserAddOutlined />}>
+          <Link to="/user-list">User List</Link>
+        </Menu.Item>
+      </SubMenu>
+      
+        </>
+        :
+        <>
+         <SubMenu
             key="Dekstop-App-Managemnent"
             icon={<ConsoleSqlOutlined />}
             title="Desktop App Management"
@@ -130,33 +148,29 @@ const Sidebar = () => {
               <Link to="/dekstop-name-list">Dekstop Name List</Link>
             </Menu.Item>
           </SubMenu>
+        <SubMenu
+        key="user"
+        icon={<UserSwitchOutlined />}
+        title="User Management"
+      >
+        <Menu.Item key="user_list" icon={<UserAddOutlined />}>
+          <Link to="/user-list">User List</Link>
+        </Menu.Item>
+      </SubMenu>
 
-          {/* Zone */}
-
-          <SubMenu
-            key="user"
-            icon={<UserSwitchOutlined />}
-            title="User Management"
-          >
-            <Menu.Item key="user_list" icon={<UserAddOutlined />}>
-              <Link to="/user-list">User List</Link>
-            </Menu.Item>
-          </SubMenu>
-
-          <SubMenu
-            key="Categories-management"
-            icon={<FormatPainterOutlined />}
-            title="Category Management"
-          >
-            <Menu.Item key="Category_list" icon={<ClusterOutlined />}>
-              <Link to="/categories-list">Categories List</Link>
-            </Menu.Item>
-            <Menu.Item key="sequence_list" icon={<InsertRowLeftOutlined />}>
-              <Link to="/sequence-categories">Sequence Category</Link>
-            </Menu.Item>
-          </SubMenu>
-
-          <SubMenu
+      <SubMenu
+        key="Categories-management"
+        icon={<FormatPainterOutlined />}
+        title="Category Management"
+      >
+        <Menu.Item key="Category_list" icon={<ClusterOutlined />}>
+          <Link to="/categories-list">Categories List</Link>
+        </Menu.Item>
+        <Menu.Item key="sequence_list" icon={<InsertRowLeftOutlined />}>
+          <Link to="/sequence-categories">Sequence Category</Link>
+        </Menu.Item>
+      </SubMenu>
+      <SubMenu
             key="token"
             icon={<HourglassOutlined />}
             title="Report Management"
@@ -221,6 +235,13 @@ const Sidebar = () => {
           <Menu.Item key="sound_list" icon={<PhoneOutlined />}>
             <Link to="/support">Support</Link>
           </Menu.Item>
+      
+        </>
+        }
+        
+          
+
+          
         </Menu>
       </Sider>
     </>

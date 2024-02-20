@@ -190,7 +190,7 @@ const Logo = () => {
           onClick={() => {
             setIsModalVisible(true);
           }}
-          src={`http://192.168.60.86:8000/dekstop/logo/read/${named}`}
+          src={`http://192.168.0.143:8001/dekstop/logo/read/${named}`}
           style={{ margin: "1rem", width: "700px" }}
           alt="Tv App image"
         />
@@ -275,7 +275,7 @@ const Logo = () => {
                   setIsModalVisible(true);
                   setNameD(data?.name);
                 }}
-                src={`http://192.168.60.86:8000/dekstop/logo/read/${data?.name}`}
+                src={`http://192.168.0.143:8001/dekstop/logo/read/${data?.name}`}
                 width="230px"
                 height="100px"
                 alt=""

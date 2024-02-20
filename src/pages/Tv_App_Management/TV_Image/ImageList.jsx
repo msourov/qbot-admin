@@ -243,7 +243,7 @@ const ImageList = () => {
                     setIsModalVisible(true);
                     setNameD(i?.name);
                   }}
-                  src={`http://192.168.60.86:8000/app/read/${i?.name}`}
+                  src={`http://192.168.0.143:8001/app/read/${i?.name}`}
                   width="40px"
                   height="40px"
                   alt=""
@@ -347,7 +347,7 @@ const ImageList = () => {
           onClick={() => {
             setIsModalVisible(true);
           }}
-          src={`http://192.168.60.86:8000/app/read/${named}`}
+          src={`http://192.168.0.143:8001/app/read/${named}`}
           style={{ margin: "1rem", width: "700px" }}
           alt="Tv App image"
         />
